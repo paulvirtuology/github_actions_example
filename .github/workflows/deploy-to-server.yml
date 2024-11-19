@@ -17,8 +17,8 @@ jobs:
       - name: Transfer Files to Server
         env:
           SERVER_IP: 98.66.233.254
-          SERVER_USER: myuser
-          SERVER_PASSWORD: mypassword
+          SERVER_USER: paul_virtuology
+          SERVER_PASSWORD: Andriamatoa301
         run: |
           # Bypass host key verification for rsync
           sshpass -p "${SERVER_PASSWORD}" rsync -avz \
