@@ -34,7 +34,7 @@ jobs:
           SERVER_PASSWORD: Andriamatoa301
         run: |
           # Run the script on the server and bypass host key verification
-          sshpass -p "${SERVER_PASSWORD}" ssh -vvv -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
+          sshpass -p "${SERVER_PASSWORD}" ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
           cd ~/simple-branch-output &&
           export BRANCH_NAME=${{ github.ref_name }} &&
           python3 main.py &&
