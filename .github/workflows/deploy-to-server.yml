@@ -17,10 +17,12 @@ jobs:
       - name: Transfer Files to Server
         env:
           SERVER_IP: 98.66.233.254
-          SERVER_USER: paul_virtuology
-          SERVER_PASSWORD: Andriamatoa301
+          SERVER_USER: myuser
+          SERVER_PASSWORD: mypassword
         run: |
+          # Bypass host key verification for rsync
           sshpass -p "${SERVER_PASSWORD}" rsync -avz \
+          -e "ssh -o StrictHostKeyChecking=no" \
           --exclude '.git' \
           --exclude '.github' \
           ./ ${SERVER_USER}@${SERVER_IP}:~/simple-branch-output
@@ -31,6 +33,7 @@ jobs:
           SERVER_USER: myuser
           SERVER_PASSWORD: mypassword
         run: |
+          # Run the script on the server and bypass host key verification
           sshpass -p "${SERVER_PASSWORD}" ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
           cd ~/simple-branch-output &&
           export BRANCH_NAME=${{ github.ref_name }} &&
