@@ -5,7 +5,7 @@ def main():
     branch_name = os.getenv("BRANCH_NAME", "unknown")
     
     if branch_name == "dev":
-        message = "This is from develp branch\n"
+        message = "This is from devel branch\n"
     elif branch_name == "main":
         message = "This is from main branch\n"
     else:
